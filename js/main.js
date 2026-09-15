@@ -109,15 +109,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* Quote form: client-side only demo submit (wire to a real backend before going live) */
+  /* Quote form: submits to FormSubmit via fetch, no page reload */
   var form = document.querySelector("#quote-form");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var success = form.querySelector(".form-success");
-      if (success) success.classList.add("show");
-      form.reset();
-      if (success) success.scrollIntoView({ behavior: "smooth", block: "center" });
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Submit failed");
+          if (success) {
+            success.classList.add("show");
+            success.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          form.reset();
+        })
+        .catch(function () {
+          alert("Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous appeler directement.");
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
