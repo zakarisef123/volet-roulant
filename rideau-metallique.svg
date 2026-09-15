@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Rideau métallique">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101d33"/>
+      <stop offset="1" stop-color="#060b14"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg1)"/>
+  <g stroke="#5b6b82" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="70" x2="800" y2="70"/>
+    <line x1="0" y1="140" x2="800" y2="140"/>
+    <line x1="0" y1="210" x2="800" y2="210"/>
+    <line x1="0" y1="280" x2="800" y2="280"/>
+    <line x1="0" y1="350" x2="800" y2="350"/>
+    <line x1="0" y1="420" x2="800" y2="420"/>
+    <line x1="0" y1="490" x2="800" y2="490"/>
+  </g>
+  <g transform="translate(230,150)">
+    <rect x="0" y="0" width="340" height="260" rx="6" fill="none" stroke="#c1602c" stroke-width="6"/>
+    <line x1="0" y1="43" x2="340" y2="43" stroke="#c1602c" stroke-width="6"/>
+    <line x1="0" y1="86" x2="340" y2="86" stroke="#c1602c" stroke-width="6"/>
+    <line x1="0" y1="129" x2="340" y2="129" stroke="#c1602c" stroke-width="6"/>
+    <line x1="0" y1="172" x2="340" y2="172" stroke="#c1602c" stroke-width="6"/>
+    <line x1="0" y1="215" x2="340" y2="215" stroke="#c1602c" stroke-width="6"/>
+    <rect x="150" y="110" width="40" height="40" rx="4" fill="#d47942"/>
+  </g>
+</svg>
