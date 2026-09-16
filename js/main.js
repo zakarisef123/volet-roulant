@@ -26,14 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
     backdrop.addEventListener("click", closeNav);
   }
 
-  /* Mobile dropdown accordion (services menu) */
+  /* Dropdown menu (click to open, on desktop and mobile) */
   document.querySelectorAll(".has-dropdown > a").forEach(function (link) {
     link.addEventListener("click", function (e) {
-      if (window.innerWidth <= 1080) {
-        e.preventDefault();
-        link.parentElement.classList.toggle("open");
-      }
+      e.preventDefault();
+      var parent = link.parentElement;
+      var wasOpen = parent.classList.contains("open");
+      document.querySelectorAll(".has-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
+      if (!wasOpen) parent.classList.add("open");
     });
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".has-dropdown")) {
+      document.querySelectorAll(".has-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
+    }
   });
 
   /* Close mobile nav after clicking a real link */
