@@ -389,26 +389,20 @@ h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
 .process-step p { color: var(--steel-300); font-size: 0.84rem; }
 
 /* Réalisations ------------------------------------------------------------------ */
-.works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-.work-card { background: var(--white); }
-.work-photo { position: relative; aspect-ratio: 4 / 3.1; overflow: hidden; border-radius: var(--radius-sm); margin-bottom: 18px; background: var(--gray-100); }
-.work-photo img { width: 100%; height: 100%; object-fit: cover; }
-.work-tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--white);
-  color: var(--navy-900);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  border-radius: 3px;
+.works-scroll { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.works-track { display: flex; gap: 14px; width: max-content; animation: works-scroll 42s linear infinite; }
+.works-scroll:hover .works-track { animation-play-state: paused; }
+.works-item { flex: none; width: 260px; aspect-ratio: 1 / 1; overflow: hidden; border-radius: var(--radius-sm); background: var(--gray-100); }
+.works-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@keyframes works-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
-.work-card .eyebrow { font-size: 0.66rem; margin-bottom: 8px; }
-.work-card h3 { font-size: 1rem; margin-bottom: 8px; }
-.work-card p { color: var(--gray-500); font-size: 0.88rem; }
+
+@media (max-width: 720px) {
+  .works-item { width: 190px; }
+}
 
 /* Professionnels ------------------------------------------------------------------ */
 .pro-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
@@ -429,6 +423,7 @@ h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
 }
 .pro-photo { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3.6; background: var(--gray-100); }
 .pro-photo img { width: 100%; height: 100%; object-fit: cover; }
+.pro-photo iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* Zone d'intervention ------------------------------------------------------------------ */
 .zone-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: start; }
@@ -642,7 +637,6 @@ h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
 @media (max-width: 1080px) {
   .services-grid, .symptoms-grid { grid-template-columns: repeat(2, 1fr); }
   .process-steps { grid-template-columns: repeat(2, 1fr); }
-  .works-grid { grid-template-columns: repeat(2, 1fr); }
   .pro-grid, .zone-grid, .content-grid { grid-template-columns: 1fr; }
   .pro-photo { order: -1; max-width: 480px; }
   .section-head { grid-template-columns: 1fr; }
@@ -686,7 +680,7 @@ h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
 }
 
 @media (max-width: 720px) {
-  .services-grid, .symptoms-grid, .process-steps, .works-grid { grid-template-columns: 1fr; }
+  .services-grid, .symptoms-grid, .process-steps { grid-template-columns: 1fr; }
   .reason-row { grid-template-columns: 1fr; gap: 6px; }
   .zone-pills { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
